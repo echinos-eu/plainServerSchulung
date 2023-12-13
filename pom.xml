@@ -20,7 +20,13 @@
     <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-web</artifactId>
-    <version>2.7.8</version>
+    <version>2.7.18</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-log4j2</artifactId>
+      <version>2.7.18</version>
     </dependency>
     <!-- This dependency includes the core HAPI-FHIR classes -->
     <dependency>
@@ -49,11 +55,11 @@
     also need to include a logging library. Logback is used here, but log4j
     would also be fine.
     -->
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-      <version>1.4.8</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>ch.qos.logback</groupId>-->
+<!--      <artifactId>logback-classic</artifactId>-->
+<!--      <version>1.4.8</version>-->
+<!--    </dependency>-->
 
     <!-- Needed for JEE/Servlet support -->
     <dependency>
