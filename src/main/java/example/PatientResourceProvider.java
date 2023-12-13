@@ -1,6 +1,7 @@
 package example;
 
 import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.rest.annotation.IdParam;
 import ca.uhn.fhir.rest.annotation.Read;
 import ca.uhn.fhir.rest.annotation.Search;
@@ -43,6 +44,13 @@ public class PatientResourceProvider implements IResourceProvider {
         .execute();
     List<Resource> list = bundle.getEntry().stream().map(e -> e.getResource()).toList();
     list.forEach(p -> p.setId(p.getIdPart()));
+
+    IParser jsonParser = fhirContext.newJsonParser().setPrettyPrint(false);
+    String pat = jsonParser.encodeResourceToString(list.get(0));
+    System.out.println(pat);
+    Patient patient = jsonParser.parseResource(Patient.class, pat);
+    System.out.println(patient.getNameFirstRep().getFamily());
+
     return list;
 
   }

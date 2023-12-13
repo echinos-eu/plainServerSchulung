@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet("/*")
+@WebServlet("/fhir/*")
 public class HapiServer extends RestfulServer {
 
   public HapiServer() {
@@ -24,5 +24,7 @@ public class HapiServer extends RestfulServer {
 
     registerInterceptor(new ResponseHighlighterInterceptor());
     this.setServerAddressStrategy(new HardcodedServerAddressStrategy("http://test.de/fhir"));
+
+    registerProvider(new QuestionnaireResponseCalculationProvider());
   }
 }
