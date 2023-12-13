@@ -18,12 +18,9 @@ public class HapiServer extends RestfulServer {
   @Override
   public void initialize(){
     List<IResourceProvider> provider = new ArrayList<>();
-
+    provider.add(new PatientResourceProvider());
     setResourceProviders(provider);
 
     registerInterceptor(new ResponseHighlighterInterceptor());
   }
-
-
-
 }
